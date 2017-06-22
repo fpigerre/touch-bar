@@ -1,0 +1,16 @@
+{
+  "name": "touch-bar",
+  "main": "./lib/touch-bar",
+  "version": "0.0.0",
+  "description": "macOS touch bar utilities for Atom",
+  "keywords": [],
+  "activationCommands": {
+    "atom-workspace": "touch-bar:toggle"
+  },
+  "repository": "https://github.com/psgs/touch-bar",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {}
+}
