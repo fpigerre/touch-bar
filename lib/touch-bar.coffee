@@ -19,13 +19,13 @@ module.exports = touchBar =
     @subscriptions.add atom.commands.add 'atom-workspace', 'touch-bar:toggle': => @toggle()
     
     textView = new TouchBarLabel()
-    textView.label = "Testing"
+    textView.label = "Touch Bar"
     
     touchBar = new TouchBar([
       textView
     ])
     
-    atom.setTouchBar(touchBar)
+    atom.getCurrentWindow().setTouchBar(touchBar)
 
   deactivate: ->
     @modalPanel.destroy()
