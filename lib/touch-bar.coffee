@@ -1,6 +1,7 @@
 TouchBarView = require './touch-bar-view'
 {CompositeDisposable} = require 'atom'
-{app, BrowserWindow, TouchBar} = require 'remote'
+{app, BrowserWindow, TouchBar, nativeImage} = require 'remote' # Electron
+ElectronNamedImage = require '../NamedImage'
 {TouchBarLabel, TouchBarButton, TouchBarSpacer} = TouchBar
 
 module.exports = touchBar =
@@ -18,11 +19,32 @@ module.exports = touchBar =
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'touch-bar:toggle': => @toggle()
     
-    textView = new TouchBarLabel()
-    textView.label = "Touch Bar"
+    # For all template images: http://hetima.github.io/fucking_nsimage_syntax/
+    sideBarButton = new TouchBarButton({
+      icon: nativeImage.createFromBuffer(ElectronNamedImage.getImageNamed('NSTouchBarSidebarTemplate', true)),
+      click: () => atom.commands.dispatch(atom.views.getView(atom.workspace), 'tree-view:toggle')
+    })
+    
+    commentButton = new TouchBarButton({
+      label: '/ /',
+      click: () => atom.workspace.getActiveTextEditor().insertText('//')
+    })
+    
+    foldButton = new TouchBarButton({
+      icon: nativeImage.createFromBuffer(ElectronNamedImage.getImageNamed('NSTouchBarGoDownTemplate', true)),
+      click: () =>
+        if atom.workspace.getActiveTextEditor().isFoldedAtCursorRow()
+          atom.workspace.getActiveTextEditor().unfoldCurrentRow()
+        else
+          atom.workspace.getActiveTextEditor().foldCurrentRow()
+    })
     
     touchBar = new TouchBar([
-      textView
+      sideBarButton,
+      new TouchBarSpacer({size: 'medium'}),
+      commentButton,
+      new TouchBarSpacer({size: 'medium'}),
+      foldButton
     ])
     
     atom.getCurrentWindow().setTouchBar(touchBar)

@@ -4,13 +4,16 @@
   "version": "0.1.0",
   "description": "macOS touch bar utilities for Atom",
   "keywords": [],
-  "activationCommands": {
-    "atom-workspace": "touch-bar:toggle"
-  },
+  "activationCommands": {},
   "repository": "https://github.com/psgs/touch-bar",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "electron-named-image": "^1.0.0"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.5.11"
+  }
 }
