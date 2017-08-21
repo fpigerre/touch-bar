@@ -7,11 +7,15 @@
   "activationCommands": {},
   "repository": "https://github.com/psgs/touch-bar",
   "license": "MIT",
+  "scripts": {
+    "rebuild": "npm rebuild -d --target=1.6.7"
+  },
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "electron-named-image": "^1.0.0"
+    "electron-named-image": "^1.0.2",
+    "nan": "^2.6.2"
   },
   "devDependencies": {
     "electron-rebuild": "^1.5.11"

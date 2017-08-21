@@ -1,7 +1,7 @@
 TouchBarView = require './touch-bar-view'
 {CompositeDisposable} = require 'atom'
 {app, BrowserWindow, TouchBar, nativeImage} = require 'remote' # Electron
-ElectronNamedImage = require '../NamedImage'
+ElectronNamedImage = require 'electron-named-image'
 {TouchBarLabel, TouchBarButton, TouchBarSpacer} = TouchBar
 
 module.exports = touchBar =
